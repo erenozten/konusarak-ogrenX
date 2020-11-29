@@ -1,0 +1,275 @@
+﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<style>
+    .answerIsTrue {
+        background-color: #2ad033f5 !important;
+        color: white !important;
+    }
+
+    .answerIsFalse {
+        background-color: #ea2633 !important;
+        color: white !important;
+    }
+
+    .saveTestButton {
+        display: block;
+        //border: none;
+        padding: 14px 28px !important;
+        font-size: 24px !important;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+        // border: none;
+        background-color: #aebdaf14;
+        text-align: center;
+    }
+
+    .wideButton {
+        display: block;
+        padding: 14px 28px !important;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: left !important;
+        width: 100%;
+        color: #231b1bd4;
+    }
+
+    .btn-outline-secondary:hover {
+        color: #fff !important;
+        background-color: #2688ea !important;
+    }
+
+
+    .block {
+        display: block;
+        width: 100%;
+        // border: none;
+        background-color: #aebdaf14;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    :root {
+        --jumbotron-padding-y: 3rem;
+    }
+
+    .jumbotron {
+        padding-top: var(--jumbotron-padding-y);
+        padding-bottom: var(--jumbotron-padding-y);
+        margin-bottom: 0;
+        background-color: #fff;
+    }
+
+
+    .jumbotron p:last-child {
+        margin-bottom: 0;
+    }
+
+    .jumbotron-heading {
+        font-weight: 300;
+    }
+
+    .jumbotron .container {
+        max-width: 100rem;
+    }
+
+    footer {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    footer p {
+        margin-bottom: .25rem;
+    }
+
+    .box-shadow {
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+</style>
+
+
+
+
+<style>
+    #module {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+
+    #module #collapseExample.collapse:not(.show) {
+        display: block;
+        height: 3rem;
+        overflow: hidden;
+    }
+
+    #module #collapseExample.collapsing {
+        height: 3rem;
+    }
+
+    #module a.collapsed::after {
+        content: '+ Show More';
+    }
+
+    #module a:not(.collapsed)::after {
+        content: '- Show Less';
+    }
+</style>
+
+<script>
+
+</script>
+
+
+@{
+    var chosenArticle = ViewBag.chosenArticle;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sınav Çöz</h1>
+    <p>Oluşturmuş olduğunuz sınavı çözün.</p>
+</div>
+
+<main role="main">
+    <section class="jumbotron text-center">
+        </br>
+        </br>
+        <div class="container">
+            <h1 class="jumbotron-heading">@chosenArticle.Title</h1>
+            <p class="lead text-muted">@*@chosenArticle.Content*@</p>
+            <div id="module" class="container">
+                @*<h3>Bacon Ipsum</h3>*@
+                <p class="collapse" id="collapseExample" aria-expanded="false">
+                    @chosenArticle.Content
+                </p>
+                <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
+            </div>
+
+
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                <div class="birinci col-md-6">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="bold">
+                                Soru 1 123123 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <!--                   <p class="">
+                                               Cevap 1) 1 is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                              </p> -->
+                            <div class="">
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">A) Şık 1 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">B) Şık 2 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">C) Şık 3 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">D) Şık 4 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="birinci col-md-6">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="bold">
+                                Soru 1 123123 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <!--                   <p class="">
+                                               Cevap 1) 1 is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                              </p> -->
+                            <div class="">
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">A) Şık 1 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">B) Şık 2 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">C) Şık 3 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">D) Şık 4 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="birinci col-md-6">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="bold">
+                                Soru 1 123123 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <!--                   <p class="">
+                                               Cevap 1) 1 is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                              </p> -->
+                            <div class="">
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">A) Şık 1 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">B) Şık 2 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">C) Şık 3 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">D) Şık 4 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="birinci col-md-6">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="bold">
+                                Soru 1 123123 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123 23 123 123 12 312 3123
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <!--                   <p class="">
+                                               Cevap 1) 1 is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                              </p> -->
+                            <div class="">
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton answerIsTrue">A) Şık 1 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton answerIsFalse">B) Şık 2 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">C) Şık 3 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                                <button style="display:block; width: %100" type="button" class="btn btn-sm btn-outline-secondary wideButton">D) Şık 4 klşsd ksşi ks şişs kşsd kişsdadsd</button>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="birinci col-md-12">
+                    <button style=" type="button" class="btn btn-sm btn-outline-secondary  saveTestButton">SINAVI TAMAMLA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</br>
+</br>

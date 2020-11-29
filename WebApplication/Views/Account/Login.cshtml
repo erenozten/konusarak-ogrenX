@@ -1,0 +1,33 @@
+﻿@model LoginViewModel 
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="login-box">
+    <h3>Default Login</h3>
+    <p>Username: erenozten@gmail.com</p>
+    <p>Password: Ee123456789*#$</p>
+    <div class="login-box-body">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group has-feedback">
+                <input asp-for="Email" class="form-control" placeholder="Username"/>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password"/>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Enter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model List<WebApplication.Core.Entities.Quiz>
+@{
+
+    ViewData["Title"] = "Sınavları Listele";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["SUCCESS"] != null)
+{
+    <div class="p-3 mb-2 bg-success text-white">
+        @TempData["SUCCESS"]
+    </div>
+
+}
+
+<h4>Bu sayfada oluşturulmuş sınavar listelenir.</h4>
+
+@foreach (var quiz in Model)
+{
+    <p>@quiz.Title</p>
+}

@@ -1,0 +1,95 @@
+﻿@using WebApplication.Extensions
+@model QuizViewModel
+@*@using WebApplication.Service.DTOs*@
+@{
+    ViewData["Title"] = "Home Page";
+    var articles = ViewBag.recent5Articles;
+    //var articles = (List<WiredArticleDto>) ViewBag.recent5Articles;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sınav Oluştur</h1>
+    <p>İstediğiniz şekilde sınavınızı oluşturun.</p>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="CreateQuiz" method="post">
+                
+                @Html.HiddenFor(t => t.Title)
+                @Html.HiddenFor(t => t.Content)
+
+                <div class="form-group">
+                    <select class="form-control" id="article_title" name="Instructors">
+
+                        <option value="">Choose blog post</option>
+
+                        @foreach (var a in articles)
+                        {
+                            <option value="@a.Title">@a.Title</option>
+                        }
+
+                    </select>
+                </div>
+
+                <div id="ballGreenForSelectInstructor" class="col-md-1"></div>
+
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Content</label>
+                    <textarea class="form-control wideTextArea" id="exampleFormControlTextarea1" placeholder="" rows="3"></textarea>
+                </div>
+
+                @for (int i = 0; i < Model.QuestionViewModels.Count; i++)
+                {
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            @Html.LabelFor(t => Model.QuestionViewModels[i].Question.Text, $"Soru {i + 1}:")
+                            @Html.TextBoxFor(t => Model.QuestionViewModels[i].Question.Text, new {@class = "form-control options", placeholder = "Soru başlığı"})
+                            @Html.ValidationMessageFor(t => Model.QuestionViewModels[i].Question.Text)
+                        </div>
+
+                        @for (int j = 0; j < Model.QuestionViewModels[i].Question.AnswerDtos.Count; j++)
+                        {
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(t => Model.QuestionViewModels[i].Question.AnswerDtos[j].Text, new {@class = "form-control options"})
+                                @Html.ValidationMessageFor(t => Model.QuestionViewModels[i].Question.AnswerDtos[j].Text, "", new {@class = "text-danger"})
+                            </div>
+                            <br/>
+                            <br/>
+                        }
+                        <div class="form-group text-center selectTrueAnswer">
+                            @Html.DropDownListFor(t => Model.QuestionViewModels[i].CorrectAnswerIndex, Model.QuestionViewModels[i].Question.AnswerDtos.ToSelectListItemList(), new {@class = "form-control selectTrueAnswer", id = "dropDownListForInstructor"})
+                        </div>
+                    </div>
+                }
+
+                <input type="submit" value="Gönder"/>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#article_title").change(function () {
+        var articleTitle = this.value;
+        if (articleTitle == "") {
+            $("#exampleFormControlTextarea1").val("");
+            return;
+        }
+        $("#exampleFormControlTextarea1").val("Loading.....");
+        $.get("/home/GetArticleByTitle", { title: articleTitle })
+            .done(function (r) {
+                $("#exampleFormControlTextarea1").val(r.content);
+
+                $("#Content").val(r.content);
+                $("#Title").val(articleTitle);
+            })
+            .fail(function () {
+                alert("Bir şeyler ters gitti!");
+            });
+    });
+</script>
